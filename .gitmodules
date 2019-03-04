@@ -4,3 +4,6 @@
 [submodule "externals/glfw"]
 	path = externals/glfw
 	url = https://github.com/glfw/glfw.git
+[submodule "externals/lodepng"]
+	path = externals/lodepng
+	url = https://github.com/lvandeve/lodepng.git
