@@ -5,7 +5,7 @@ macro(stringify outfiles)
 		set(outfile "${CMAKE_CURRENT_BINARY_DIR}/${outfile}.i")
 		set(${outfiles} ${${outfiles}} ${outfile})
 		add_custom_command(OUTPUT ${outfile}
-			COMMAND cat ${infile} | $<TARGET_FILE:bin2c> > ${outfile}
+			COMMAND $<TARGET_FILE:bin2c> ${infile} ${outfile}
 			MAIN_DEPENDENCY ${infile} VERBATIM)
 	endforeach()
 endmacro()
