@@ -1,6 +1,6 @@
---- vdp_old.c	2019-01-04 02:44:17.000000000 -0500
-+++ vdp.c	2019-03-04 01:32:46.082842355 -0500
-@@ -2064,6 +2064,8 @@
+--- vdp.c	2022-05-24 22:49:38.000000000 -0300
++++ vdp.modified.c	2022-06-07 15:14:05.360633184 -0300
+@@ -2123,11 +2123,16 @@
  	vdp_update_per_frame_debug(context);
  }
  
@@ -8,14 +8,12 @@
 +
  static void advance_output_line(vdp_context *context)
  {
- 	if (headless) {
-@@ -2086,6 +2088,9 @@
- 			context->output_lines = 0;
- 		}
- 		uint32_t output_line = context->vcounter;
-+		if (output_line == 0) {
-+			run_gl_vdp(context);
-+		}
- 		if (!(context->regs[REG_MODE_2] & BIT_MODE_5)) {
- 			//vcounter increment occurs much later in Mode 4
- 			output_line++;
+ 	//This function is kind of gross because of the need to deal with vertical border busting via mode changes
+ 	uint16_t lines_max = context->inactive_start + context->border_bot + context->border_top;
+ 	uint32_t output_line = context->vcounter;
++	if (output_line == 0) {
++		run_gl_vdp(context);
++	}
+ 	if (!(context->regs[REG_MODE_2] & BIT_MODE_5)) {
+ 		//vcounter increment occurs much later in Mode 4
+ 		output_line++;

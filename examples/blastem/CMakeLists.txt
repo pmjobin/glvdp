@@ -3,7 +3,7 @@ project(blastem C)
 
 set(CMAKE_C_STANDARD 99)
 
-set(BLASTEM_SRC_URL "https://www.retrodev.com/repos/blastem/archive/357b4951d9b2.tar.gz")
+set(BLASTEM_SRC_URL "https://www.retrodev.com/repos/blastem/archive/6a954675d634.tar.gz")
 set(BLASTEM_SRC_ZIP "${CMAKE_CURRENT_SOURCE_DIR}/blastem.src.tar.gz")
 
 include(FindPkgConfig)
@@ -39,6 +39,7 @@ set(SRC
 	vdp.c
 	glvdp.c
 	render_sdl.c
+	controller_info.c
 	ppm.c
 	png.c
 	io.c
@@ -76,11 +77,21 @@ set(SRC
 	ym2612.c
 	psg.c
 	wave.c
+	vgm.c
+	event_log.c
+	render_audio.c
+	rf5c164.c
 	saves.c
 	zip.c
 	bindings.c
 	jcart.c
-	controller_info.c
+	gen_player.c
+	segacd.c
+	lc8951.c
+	cdimage.c
+	cdd_mcu.c
+	cd_graphics.c
+	cdd_fader.c
 	#nuklear_ui/font.c
 	#nuklear_ui/blastem_nuklear.c
 	#nuklear_ui/sfnt.c
