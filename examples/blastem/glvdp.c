@@ -74,22 +74,22 @@ void run_gl_vdp(vdp_context *vdp) {
 	switch (vdp->regs[REG_MODE_3] & 3) {
 	case 0:
 		for (size_t i = 0; i < VDP_HSCROLL_COUNT; ++i) {
-			hscroll[VDP_PLANE_A][i] = -hs[0];
-			hscroll[VDP_PLANE_B][i] = -hs[1];
+			hscroll[VDP_PLANE_A][i] = hs[0];
+			hscroll[VDP_PLANE_B][i] = hs[1];
 		}
 		break;
 
 	case 2:
 		for (size_t i = 0; i < VDP_HSCROLL_COUNT; ++i) {
-			hscroll[VDP_PLANE_A][i] = -hs[(i & ~7) * 2 + 0];
-			hscroll[VDP_PLANE_B][i] = -hs[(i & ~7) * 2 + 1];
+			hscroll[VDP_PLANE_A][i] = hs[(i & ~7) * 2 + 0];
+			hscroll[VDP_PLANE_B][i] = hs[(i & ~7) * 2 + 1];
 		}
 		break;
 
 	default:
 		for (size_t i = 0; i < VDP_HSCROLL_COUNT; ++i) {
-			hscroll[VDP_PLANE_A][i] = -hs[i * 2 + 0];
-			hscroll[VDP_PLANE_B][i] = -hs[i * 2 + 1];
+			hscroll[VDP_PLANE_A][i] = hs[i * 2 + 0];
+			hscroll[VDP_PLANE_B][i] = hs[i * 2 + 1];
 		}
 		break;
 	}
@@ -100,8 +100,7 @@ void run_gl_vdp(vdp_context *vdp) {
 			vscroll[VDP_PLANE_A][i] = vdp->vsram[i * 2 + 0];
 			vscroll[VDP_PLANE_B][i] = vdp->vsram[i * 2 + 1];
 		}
-	}
-	else {
+	} else {
 		for (size_t i = 0; i < 20; ++i) {
 			vscroll[VDP_PLANE_A][i] = vdp->vsram[0];
 			vscroll[VDP_PLANE_B][i] = vdp->vsram[1];

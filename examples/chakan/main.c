@@ -73,8 +73,7 @@ static void extract_patterns_from_png(uint32_t **patterns, vdp_color_t **colors,
 				}
 			}
 		}
-	}
-	else {
+	} else {
 		for (unsigned int j = 0; j < height; j += 8) {
 			for (unsigned int i = 0; i < width; i += 8) {
 				for (unsigned int k = 0; k < 8; ++k) {
@@ -218,10 +217,10 @@ int main() {
 
 #if 1
 		for (unsigned int i = 0; i < VDP_HSCROLL_COUNT; i += 2) {
-			hscroll_table[VDP_PLANE_A][i + 0] = 224;
-			hscroll_table[VDP_PLANE_A][i + 1] = 224;
-			hscroll_table[VDP_PLANE_B][i + 0] = (uint16_t)(224 + 8 * sin((double)i / 32 + t / 2));
-			hscroll_table[VDP_PLANE_B][i + 1] = (uint16_t)(224 - 8 * cos((double)i / 32 + t / 2));
+			hscroll_table[VDP_PLANE_A][i + 0] = -224;
+			hscroll_table[VDP_PLANE_A][i + 1] = -224;
+			hscroll_table[VDP_PLANE_B][i + 0] = (uint16_t)(-224 + 8 * sin((double)i / 32 + t / 2));
+			hscroll_table[VDP_PLANE_B][i + 1] = (uint16_t)(-224 - 8 * cos((double)i / 32 + t / 2));
 		}
 		for (unsigned int i = 0; i < VDP_VSCROLL_COUNT; ++i) {
 			vscroll_table[VDP_PLANE_A][i] = (uint16_t)(4 * fabs(sin(t)));

@@ -187,7 +187,7 @@ void vdp_set_background_color(vdp_context_t *context, unsigned int i) {
 }
 
 void vdp_set_plane_size(vdp_context_t *context, unsigned int width, unsigned int height) {
-	glProgramUniform2i(context->program, 2, (GLint)width, (GLint)height);
+	glProgramUniform2ui(context->program, 2, width, height);
 }
 
 void vdp_set_window_coord(vdp_context_t *context, int x, int y) {
